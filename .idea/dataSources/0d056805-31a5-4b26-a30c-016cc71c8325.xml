@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="assurance">
+  <database-model serializer="dbm" dbms="DERBY" family-id="DERBY" format-version="4.15">
+    <root id="1">
+      <ServerVersion>10.14.1.0</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="APP">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="NULLID"/>
+    <schema id="4" parent="1" name="SQLJ"/>
+    <schema id="5" parent="1" name="SYS"/>
+    <schema id="6" parent="1" name="SYSCAT"/>
+    <schema id="7" parent="1" name="SYSCS_DIAG"/>
+    <schema id="8" parent="1" name="SYSCS_UTIL"/>
+    <schema id="9" parent="1" name="SYSFUN"/>
+    <schema id="10" parent="1" name="SYSIBM"/>
+    <schema id="11" parent="1" name="SYSPROC"/>
+    <schema id="12" parent="1" name="SYSSTAT"/>
+    <table id="13" parent="2" name="CLIENT"/>
+    <table id="14" parent="2" name="CONTRAT"/>
+    <table id="15" parent="2" name="NUMSECU"/>
+    <table id="16" parent="2" name="PRODUIT"/>
+    <table id="17" parent="2" name="REMBOURSEMENT"/>
+    <table id="18" parent="2" name="RISQUE"/>
+    <column id="19" parent="13" name="NCLIENT">
+      <Position>1</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DefaultExpression>AUTOINCREMENT: start 1 increment 1</DefaultExpression>
+    </column>
+    <column id="20" parent="13" name="NOM">
+      <Position>2</Position>
+      <DataType>VARCHAR(40)|12s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="13" name="PRENOM">
+      <Position>3</Position>
+      <DataType>VARCHAR(40)|12s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="13" name="NNUMSECU">
+      <Position>4</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="13" name="TELEPHONE">
+      <Position>5</Position>
+      <DataType>VARCHAR(12)|12s</DataType>
+    </column>
+    <column id="24" parent="13" name="REVENU">
+      <Position>6</Position>
+      <DataType>NUMERIC(10,2)|2s</DataType>
+    </column>
+    <column id="25" parent="13" name="NRISQUE">
+      <Position>7</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="26" parent="13" name="SQL190616183736180">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NCLIENT</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="27" parent="13" name="SQL190616183736190">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NNUMSECU</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="28" parent="13" name="SQL190616183736192">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NNUMSECU</ColNames>
+    </index>
+    <index id="29" parent="13" name="SQL190616183736191">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NRISQUE</ColNames>
+    </index>
+    <key id="30" parent="13" name="SQL190616183736180">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NCLIENT</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="31" parent="13" name="SQL190616183736190">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NNUMSECU</ColNames>
+    </key>
+    <foreign-key id="32" parent="13" name="FK_CLIENT_NUMSECU">
+      <ColNames>NNUMSECU</ColNames>
+      <RefTableName>NUMSECU</RefTableName>
+      <RefKeyName>SQL190616183521900</RefKeyName>
+      <RefColNames>NNUMSECU</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="33" parent="13" name="FK_CLIENT_RISQUE">
+      <ColNames>NRISQUE</ColNames>
+      <RefTableName>RISQUE</RefTableName>
+      <RefKeyName>SQL190616183521860</RefKeyName>
+      <RefColNames>NRISQUE</RefColNames>
+    </foreign-key>
+    <column id="34" parent="14" name="NCONTRAT">
+      <Position>1</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DefaultExpression>AUTOINCREMENT: start 1 increment 1</DefaultExpression>
+    </column>
+    <column id="35" parent="14" name="NUMERO">
+      <Position>2</Position>
+      <DataType>VARCHAR(11)|12s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="36" parent="14" name="NPRODUIT">
+      <Position>3</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="37" parent="14" name="NCLIENT">
+      <Position>4</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="14" name="DATEDEBUT">
+      <Position>5</Position>
+      <DataType>DATE|91s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="14" name="DATEECHEANCE">
+      <Position>6</Position>
+      <DataType>DATE|91s</DataType>
+    </column>
+    <index id="40" parent="14" name="SQL190616183736270">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NCONTRAT</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="41" parent="14" name="SQL190616183736280">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NPRODUIT</ColNames>
+    </index>
+    <index id="42" parent="14" name="SQL190616183736281">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NCLIENT</ColNames>
+    </index>
+    <key id="43" parent="14" name="SQL190616183736270">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NCONTRAT</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="44" parent="14" name="FK_CONTRAT_PRODUIT">
+      <ColNames>NPRODUIT</ColNames>
+      <RefTableName>PRODUIT</RefTableName>
+      <RefKeyName>SQL190616183521990</RefKeyName>
+      <RefColNames>NPRODUIT</RefColNames>
+    </foreign-key>
+    <foreign-key id="45" parent="14" name="FK_CONTRAT_CLIENT">
+      <ColNames>NCLIENT</ColNames>
+      <RefTableName>CLIENT</RefTableName>
+      <RefKeyName>SQL190616183521950</RefKeyName>
+      <RefColNames>NCLIENT</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="46" parent="15" name="NNUMSECU">
+      <Position>1</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DefaultExpression>AUTOINCREMENT: start 1 increment 1</DefaultExpression>
+    </column>
+    <column id="47" parent="15" name="SEXE">
+      <Position>2</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="48" parent="15" name="ANNEENAISSANCE">
+      <Position>3</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="15" name="MOISNAISSANCE">
+      <Position>4</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="15" name="DEPARTEMENT">
+      <Position>5</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="15" name="COMMUNE">
+      <Position>6</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="52" parent="15" name="ORDRE">
+      <Position>7</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="53" parent="15" name="CLE">
+      <Position>8</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="54" parent="15" name="SQL190616183736170">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NNUMSECU</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="55" parent="15" name="SQL190616183736171">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>SEXE
+ANNEENAISSANCE
+MOISNAISSANCE
+DEPARTEMENT
+COMMUNE
+ORDRE
+CLE</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="56" parent="15" name="SQL190616183736170">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NNUMSECU</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="57" parent="15" name="SQL190616183736171">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>SEXE
+ANNEENAISSANCE
+MOISNAISSANCE
+DEPARTEMENT
+COMMUNE
+ORDRE
+CLE</ColNames>
+    </key>
+    <column id="58" parent="16" name="NPRODUIT">
+      <Position>1</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DefaultExpression>AUTOINCREMENT: start 1 increment 1</DefaultExpression>
+    </column>
+    <column id="59" parent="16" name="NOM">
+      <Position>2</Position>
+      <DataType>VARCHAR(20)|12s</DataType>
+    </column>
+    <column id="60" parent="16" name="NRISQUE">
+      <Position>3</Position>
+      <DataType>INTEGER|4s</DataType>
+    </column>
+    <column id="61" parent="16" name="TAUXREVENU">
+      <Position>4</Position>
+      <DataType>NUMERIC(5,2)|2s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="62" parent="16" name="EFFORTBUDGETAIRE">
+      <Position>5</Position>
+      <DataType>NUMERIC(5,2)|2s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="63" parent="16" name="SQL190616183736210">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NPRODUIT</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="64" parent="16" name="SQL190616183736211">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NRISQUE</ColNames>
+    </index>
+    <key id="65" parent="16" name="SQL190616183736210">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NPRODUIT</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="66" parent="16" name="FK_PRODUIT_RISQUE">
+      <ColNames>NRISQUE</ColNames>
+      <RefTableName>RISQUE</RefTableName>
+      <RefKeyName>SQL190616183521860</RefKeyName>
+      <RefColNames>NRISQUE</RefColNames>
+    </foreign-key>
+    <column id="67" parent="17" name="NREMBOURSEMENT">
+      <Position>1</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DefaultExpression>AUTOINCREMENT: start 1 increment 1</DefaultExpression>
+    </column>
+    <column id="68" parent="17" name="NCONTRAT">
+      <Position>2</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="69" parent="17" name="MONTANT">
+      <Position>3</Position>
+      <DataType>NUMERIC(7,2)|2s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="70" parent="17" name="DATEDOMMAGE">
+      <Position>4</Position>
+      <DataType>DATE|91s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="71" parent="17" name="SQL190616183736310">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NREMBOURSEMENT</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="72" parent="17" name="SQL190616183736311">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NCONTRAT</ColNames>
+    </index>
+    <key id="73" parent="17" name="SQL190616183736310">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NREMBOURSEMENT</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="74" parent="17" name="FK_DOMMAGE_CONTRAT">
+      <ColNames>NCONTRAT</ColNames>
+      <RefTableName>CONTRAT</RefTableName>
+      <RefKeyName>SQL190616183522020</RefKeyName>
+      <RefColNames>NCONTRAT</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="75" parent="18" name="NRISQUE">
+      <Position>1</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DefaultExpression>AUTOINCREMENT: start 1 increment 1</DefaultExpression>
+    </column>
+    <column id="76" parent="18" name="NIVEAU">
+      <Position>2</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="77" parent="18" name="SQL190616183736150">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NRISQUE</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="78" parent="18" name="SQL190616183736150">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NRISQUE</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
