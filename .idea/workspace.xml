@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8df98c12-3979-490d-bb4f-4c65c7431a3f" name="Default Changelist" comment="" />
+    <list default="true" id="8df98c12-3979-490d-bb4f-4c65c7431a3f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0d056805-31a5-4b26-a30c-016cc71c8325.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7facc355-31b0-4a90-bf6e-612e47f65712.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a8d6be68-9b79-4774-9b36-876a4a98a8a8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/de8c6e9e-9750-4289-a556-6eeed8b9b66b.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e21c5e2b-24c8-4ef3-a93c-a1c0d45f1edd.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assurance/db.lck" beforeDir="false" afterPath="$PROJECT_DIR$/assurance/db.lck" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assurance/log/log.ctrl" beforeDir="false" afterPath="$PROJECT_DIR$/assurance/log/log.ctrl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assurance/log/log3.dat" beforeDir="false" afterPath="$PROJECT_DIR$/assurance/log/log3.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assurance/log/logmirror.ctrl" beforeDir="false" afterPath="$PROJECT_DIR$/assurance/log/logmirror.ctrl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assurance/seg0/c10.dat" beforeDir="false" afterPath="$PROJECT_DIR$/assurance/seg0/c10.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assurance/seg0/c230.dat" beforeDir="false" afterPath="$PROJECT_DIR$/assurance/seg0/c230.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assurance/seg0/c241.dat" beforeDir="false" afterPath="$PROJECT_DIR$/assurance/seg0/c241.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assurance/seg0/c251.dat" beforeDir="false" afterPath="$PROJECT_DIR$/assurance/seg0/c251.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/derby.log" beforeDir="false" afterPath="$PROJECT_DIR$/derby.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RequeteAssurance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RequeteAssurance.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,28 +37,32 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="DB Assurance" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="DB Assurance" type="feb32156:DbDataSourceImpl" />
+        <item name="TOM: schema" type="12aa88c4:DerbyImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="DB Assurance" type="feb32156:DbDataSourceImpl" />
+        <item name="TOM: schema" type="12aa88c4:DerbyImplModel$Schema" />
+        <item name="RISQUE: table" type="7a557cd6:DerbyImplModel$Table" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/0d056805-31a5-4b26-a30c-016cc71c8325/console.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+            <state relative-caret-position="-135">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -49,66 +70,28 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RequeteAssurance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="10" column="55" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
+            <state>
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#748#749#0" expanded="true" />
-                <element signature="e#813#814#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/metier/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+            <state relative-caret-position="440">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/metier/NumSecu.java">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/f7c285f8-690a-4e2f-b535-365083925223/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/metier/Risque.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-              <folding>
-                <element signature="e#240#241#0" expanded="true" />
-                <element signature="e#269#270#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="das://0d056805-31a5-4b26-a30c-016cc71c8325/schema/APP/table/CLIENT">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true">
-                <filter text="" />
-              </filtering>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="das://0d056805-31a5-4b26-a30c-016cc71c8325/schema/APP/table/NUMSECU">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true">
-                <filter text="" />
-              </filtering>
+            <state relative-caret-position="362">
+              <caret line="23" selection-start-line="23" selection-end-line="26" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -122,28 +105,37 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/0d8b510f-f5f9-4f1e-ad59-6e180b6c59e9/console.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/4fe61151-06c6-489e-bfc3-ac0b9f35b0bd/console.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/a8d6be68-9b79-4774-9b36-876a4a98a8a8/console.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/e21c5e2b-24c8-4ef3-a93c-a1c0d45f1edd/console.sql" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/0d056805-31a5-4b26-a30c-016cc71c8325/console.sql" />
         <option value="$PROJECT_DIR$/src/metier/RequeteAssurance.java" />
-        <option value="$PROJECT_DIR$/src/RequeteAssurance.java" />
         <option value="$PROJECT_DIR$/src/metier/Risque.java" />
         <option value="$PROJECT_DIR$/src/metier/NumSecu.java" />
         <option value="$PROJECT_DIR$/src/metier/Client.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/0d056805-31a5-4b26-a30c-016cc71c8325/console.sql" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/7facc355-31b0-4a90-bf6e-612e47f65712/console.sql" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/22809619-fd00-4488-91a9-492251512887/console.sql" />
+        <option value="$PROJECT_DIR$/src/derbyAssurance.sql" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/f7c285f8-690a-4e2f-b535-365083925223/console.sql" />
+        <option value="$PROJECT_DIR$/src/RequeteAssurance.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1166" />
+    <option name="x" value="29" />
+    <option name="y" value="32" />
+    <option name="width" value="1367" />
     <option name="height" value="824" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -151,49 +143,31 @@
     <panes>
       <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="AssuranceDB" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AssuranceDB" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AssuranceDB" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AssuranceDB" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AssuranceDB" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AssuranceDB" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="metier" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="derby.embedded&#10;derby" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assuDB" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assurance" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/assuDB" />
-      <recent name="$PROJECT_DIR$/db" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assurance" />
       <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assurance" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/assuDB" />
+      <recent name="$PROJECT_DIR$/db" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -234,32 +208,31 @@
     <configuration />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="887" height="824" extended-state="0" />
-    <editor active="true" />
+    <frame x="29" y="32" width="1367" height="824" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25680473" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19773585" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.329235" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.66256833" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Console" order="7" weight="0.329235" />
+      <window_info anchor="bottom" id="Database Console" order="7" weight="0.2581967" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.36612022" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" weight="0.18097281" />
+      <window_info anchor="right" id="Database" order="3" weight="0.22037736" />
       <window_info anchor="right" id="make" order="4" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
     </layout>
@@ -285,13 +258,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/derbyAssurance.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" selection-start-line="7" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a8d6be68-9b79-4774-9b36-876a4a98a8a8/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -311,13 +277,7 @@
     <entry file="file://$PROJECT_DIR$/assurance/service.properties">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/assurance/derbyAssurance.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6101">
-          <caret line="63" column="2" lean-forward="true" selection-end-line="384" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/assurance/derbyAssurance.sql" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/e21c5e2b-24c8-4ef3-a93c-a1c0d45f1edd/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -334,12 +294,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/metier/Risque.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#240#241#0" expanded="true" />
+            <element signature="e#269#270#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/metier/NumSecu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="das://0d056805-31a5-4b26-a30c-016cc71c8325/schema/APP/table/CLIENT">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true">
             <filter text="" />
           </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/derby.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="das://0d056805-31a5-4b26-a30c-016cc71c8325/schema/APP/table/RISQUE">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true">
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/116c66dc-8c62-4cba-983d-6d183c6efc26/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/0d056805-31a5-4b26-a30c-016cc71c8325/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="22" column="1" selection-end-line="33" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -352,57 +352,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/0d056805-31a5-4b26-a30c-016cc71c8325/console.sql">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/7facc355-31b0-4a90-bf6e-612e47f65712/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assurance/db-derby-10.14.2.0-bin/bin/ij" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/22809619-fd00-4488-91a9-492251512887/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+        <state relative-caret-position="60">
+          <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+    <entry file="das://22809619-fd00-4488-91a9-492251512887/schema/TOM/table/CLIENT">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true">
+            <filter text="" />
+          </filtering>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RequeteAssurance.java">
+    <entry file="file://$PROJECT_DIR$/src/derbyAssurance.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="10" column="55" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#748#749#0" expanded="true" />
-            <element signature="e#813#814#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/metier/Risque.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="e#240#241#0" expanded="true" />
-            <element signature="e#269#270#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/metier/NumSecu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        <state>
+          <caret selection-end-line="378" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/metier/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+        <state relative-caret-position="440">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/f7c285f8-690a-4e2f-b535-365083925223/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="23" selection-start-line="23" selection-end-line="26" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RequeteAssurance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-135">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
