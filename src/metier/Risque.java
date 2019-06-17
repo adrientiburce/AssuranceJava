@@ -14,4 +14,13 @@ public class Risque {
     public int getNiveau() {
         return niveau;
     }
+
+    @Override
+    public String toString() {
+        return "R" +
+                "{" +
+                "nRisque=" + nRisque +
+                ", niveau=" + niveau +
+                '}';
+    }
 }
