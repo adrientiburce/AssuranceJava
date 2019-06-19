@@ -1,7 +1,6 @@
 import metier.Client;
 import metier.NumSecu;
 import metier.Risque;
-import org.apache.derby.client.am.SqlException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -103,6 +102,88 @@ public class RequeteAssurance {
         return clients;
     }
 
+    private int ajouteNumSecu(NumSecu s) throws SQLException {
+        int resNumSecu = 0;
+        String requete = "INSERT INTO NUMSECU(SEXE, ANNEENAISSANCE, MOISNAISSANCE, DEPARTEMENT, COMMUNE, ORDRE, CLE)\n" +
+                "VALUES(?, ?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
+            pstmt.setInt(1, s.getSexe());
+            pstmt.setInt(2, s.getAnneNaissance());
+            pstmt.setInt(3, s.getMoisNaissance());
+            pstmt.setInt(4, s.getDepartement());
+            pstmt.setInt(5, s.getCommune());
+            pstmt.setInt(6, s.getOrdre());
+            pstmt.setInt(7, s.getCle());
+            pstmt.executeUpdate();
+            ResultSet res = pstmt.getGeneratedKeys();
+            if (res.next()) {
+                int id = res.getInt(1);
+                resNumSecu = id;
+                System.out.println("Id du nouvel enregistrement : " + id);
+            }
+            res.close();
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resNumSecu;
+    }
+
+    public boolean ajouteClient(Client c) throws SQLException {
+        // try add numsecu before =
+        int resAddSecu = ajouteNumSecu(c.getnNumSecu());
+        if (resAddSecu < 0) return false;
+        boolean resClient = false;
+        String requeteClient = "INSERT INTO CLIENT(NOM, PRENOM, NNUMSECU, TELEPHONE, REVENU, NRISQUE)\n" +
+                "VALUES (?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(requeteClient);
+            pstmt.setString(1, c.getNom());
+            pstmt.setString(2, c.getPrenom());
+            pstmt.setInt(3, resAddSecu);
+            pstmt.setString(4, c.getTelephone());
+            pstmt.setInt(5, c.getRevenu());
+            pstmt.setInt(6, c.getRisque());
+            int nbRows = pstmt.executeUpdate();
+            if (nbRows > 0) resClient = true;
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resClient;
+    }
+
+    public boolean miseAJourClient(Client c) throws SQLException {
+        boolean resUpdateClient = false;
+        String requeteClient = "UPDATE CLIENT\n" +
+                "SET NOM=?, PRENOM=?, TELEPHONE=?, REVENU=?, NRISQUE=?\n" +
+                "WHERE NCLIENT=?";
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(requeteClient);
+            pstmt.setString(1, c.getNom());
+            pstmt.setString(2, c.getPrenom());
+            pstmt.setString(3, c.getTelephone());
+            pstmt.setInt(4, c.getRevenu());
+            pstmt.setInt(5, c.getRisque());
+            // we get targeted client
+            pstmt.setInt(6, c.getnClient());
+            int nbRows = pstmt.executeUpdate();
+            if (nbRows > 0) resUpdateClient = true;
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resUpdateClient;
+    }
+
+    /**
+     * create a Client Object from DB Result
+     *
+     * @param res
+     * @return
+     * @throws SQLException
+     */
     private Client generateClient(ResultSet res) throws SQLException {
         return new Client(
                 res.getInt("nclient"),
@@ -117,11 +198,17 @@ public class RequeteAssurance {
     public static void main(String[] args) throws SQLException {
         RequeteAssurance requete = new RequeteAssurance();
         //List<Risque> mesRisques = requete.ensRisques();
-        //System.out.println(mesRisques);
-
-        System.out.println(requete.ensClients());
+        //System.out.println(requete.ensClients());
         //requete.ensClients("cl");
 
+        NumSecu s = new NumSecu(0, 98, 10, 24, 24, 22, 168);
+        //System.out.println(requete.ajouteNumSecu(s));
+
+        Client client = new Client("Tib", "Adrien", "0777053188", 45000, s, 3);
+        Client clientBis = new Client(621, "Veraldi", "Lucia", "0777053188", 45000, s, 3);
+
+        //System.out.println(requete.ajouteClient(client));
+        System.out.println(requete.miseAJourClient(clientBis));
         requete.close();
     }
 }
