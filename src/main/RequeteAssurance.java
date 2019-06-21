@@ -1,3 +1,5 @@
+package main;
+
 import metier.Client;
 import metier.NumSecu;
 import metier.Risque;
@@ -9,12 +11,9 @@ import java.util.List;
 public class RequeteAssurance {
 
     private Connection connection;
-    private String SELECT_QUERY = "SELECT r.NRISQUE, NIVEAU\n" +
-            "FROM RISQUE r\n" +
-            "         INNER JOIN CLIENT c\n" +
-            "                    ON c.NRISQUE = r.NIVEAU";
+    private static RequeteAssurance requete;
 
-    public RequeteAssurance() {
+    private RequeteAssurance() {
         try {
             // Create a named constant for the URL.
             final String DB_URL = "jdbc:derby:/Users/adrient/IdeaProjects/AssuranceDB/assurance";
@@ -27,6 +26,13 @@ public class RequeteAssurance {
         }
     }
 
+    public static RequeteAssurance getInstance() {
+        if (requete == null) {
+            requete = new RequeteAssurance();
+        }
+        return requete;
+    }
+
     public void close() {
         try {
             connection.close();
@@ -37,6 +43,10 @@ public class RequeteAssurance {
 
     public List<Risque> ensRisques() throws SQLException {
         List<Risque> resRisque = new ArrayList<>();
+        String SELECT_QUERY = "SELECT r.NRISQUE, NIVEAU\n" +
+                "FROM RISQUE r\n" +
+                "         INNER JOIN CLIENT c\n" +
+                "                    ON c.NRISQUE = r.NIVEAU";
         try {
             // Get a Statement object.
             Statement stmt = this.connection.createStatement();
@@ -199,16 +209,17 @@ public class RequeteAssurance {
         RequeteAssurance requete = new RequeteAssurance();
         //List<Risque> mesRisques = requete.ensRisques();
         //System.out.println(requete.ensClients());
-        //requete.ensClients("cl");
 
-        NumSecu s = new NumSecu(0, 98, 10, 24, 24, 22, 168);
-        //System.out.println(requete.ajouteNumSecu(s));
+        requete.ensClients("cl");
 
-        Client client = new Client("Tib", "Adrien", "0777053188", 45000, s, 3);
-        Client clientBis = new Client(621, "Veraldi", "Lucia", "0777053188", 45000, s, 3);
+//        NumSecu s = new NumSecu(0, 98, 10, 24, 24, 22, 168);
+//        System.out.println(requete.ajouteNumSecu(s));
 
-        //System.out.println(requete.ajouteClient(client));
-        System.out.println(requete.miseAJourClient(clientBis));
+//        Client client = new Client("Tib", "Adrien", "0777053188", 45000, s, 3);
+//        Client clientBis = new Client(621, "Veraldi", "Lucia", "0777053188", 45000, s, 3);
+
+//        System.out.println(requete.ajouteClient(client));
+//        System.out.println(requete.miseAJourClient(clientBis));
         requete.close();
     }
 }

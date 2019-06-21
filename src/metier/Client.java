@@ -10,6 +10,11 @@ public class Client {
     private NumSecu nNumSecu;
     private int risque;
 
+    public Client(String nom, String prenom) {
+        this.nom = nom;
+        this.prenom = prenom;
+    }
+
     public Client(int nClient, String nom, String prenom, String telephone, int revenu, NumSecu nNumSecu, int risque) {
         this.nClient = nClient;
         this.nom = nom;
@@ -20,7 +25,7 @@ public class Client {
         this.risque = risque;
     }
 
-    public Client( String nom, String prenom, String telephone, int revenu, NumSecu nNumSecu, int risque) {
+    public Client(String nom, String prenom, String telephone, int revenu, NumSecu nNumSecu, int risque) {
         this.nom = nom;
         this.prenom = prenom;
         this.telephone = telephone;
@@ -55,5 +60,10 @@ public class Client {
 
     public int getRisque() {
         return risque;
+    }
+
+    @Override
+    public String toString() {
+        return nom + " " + prenom;
     }
 }
