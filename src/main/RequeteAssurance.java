@@ -1,5 +1,6 @@
 package main;
 
+import exceptions.NumSecuException;
 import metier.Client;
 import metier.NumSecu;
 import metier.Risque;
@@ -43,50 +44,51 @@ public class RequeteAssurance {
 
     public List<Risque> ensRisques() throws SQLException {
         List<Risque> resRisque = new ArrayList<>();
-        String SELECT_QUERY = "SELECT r.NRISQUE, NIVEAU\n" +
-                "FROM RISQUE r\n" +
-                "         INNER JOIN CLIENT c\n" +
-                "                    ON c.NRISQUE = r.NIVEAU";
-        try {
-            // Get a Statement object.
-            Statement stmt = this.connection.createStatement();
-            ResultSet res = stmt.executeQuery(SELECT_QUERY);
-            while (res.next()) {
-                Risque risque = new Risque(res.getInt("nrisque"), res.getInt("niveau"));
-                //System.out.println(res.getInt("niveau"));
-                resRisque.add(risque);
-            }
-            res.close();
-            stmt.close();
-
-        } catch (SQLException ex) {
-            System.out.println("ERROR: " + ex.getMessage());
+        String SELECT_QUERY = "SELECT NIVEAU, NRISQUE FROM RISQUE";
+        // Get a Statement object.
+        Statement stmt = this.connection.createStatement();
+        ResultSet res = stmt.executeQuery(SELECT_QUERY);
+        while (res.next()) {
+            Risque risque = new Risque(res.getInt("nrisque"), res.getInt("niveau"));
+            //System.out.println(res.getInt("niveau"));
+            resRisque.add(risque);
         }
+        res.close();
+        stmt.close();
         return resRisque;
     }
 
-    public List<Client> ensClients() {
+    public List<Client> ensClients() throws SQLException {
         String requete = "SELECT *\n" +
                 "FROM CLIENT c\n" +
                 "         INNER JOIN NUMSECU secu\n" +
                 "                    ON secu.NNUMSECU = c.NCLIENT\n" +
                 "ORDER BY NOM ASC";
         List<Client> clients = new ArrayList<>();
-        try {
-            Statement stmt = this.connection.createStatement();
-            ResultSet res = stmt.executeQuery(requete);
-            while (res.next()) {
-                clients.add(generateClient(res));
-            }
-            res.close();
-            stmt.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        Statement stmt = this.connection.createStatement();
+        ResultSet res = stmt.executeQuery(requete);
+        while (res.next()) {
+            clients.add(generateClient(res));
         }
+        res.close();
+        stmt.close();
         return clients;
     }
-
-    public List<Client> ensClients(String nomprenom) {
+    public Client selectClient(int idClient) throws SQLException {
+        String requete = "SELECT * FROM CLIENT\n" +
+                "WHERE NCLIENT = ?;";
+        Client result = null;
+        PreparedStatement pstmt = connection.prepareStatement(requete);
+        pstmt.setInt(1, idClient);
+        ResultSet res = pstmt.executeQuery();
+        while (res.next()) {
+            result = generateClient(res);
+        }
+        res.close();
+        pstmt.close();
+        return result;
+    }
+    public List<Client> ensClients(String nomprenom) throws SQLException {
         String requete = "SELECT *\n" +
                 "FROM CLIENT c\n" +
                 "         INNER JOIN NUMSECU secu\n" +
@@ -94,21 +96,17 @@ public class RequeteAssurance {
                 "WHERE LOWER(PRENOM) LIKE ? \n" +
                 "OR LOWER(NOM) LIKE ? ";
         List<Client> clients = new ArrayList<>();
-        try {
-            PreparedStatement pstmt = connection.prepareStatement(requete);
-            pstmt.setString(1, '%' + nomprenom.toLowerCase() + '%');
-            pstmt.setString(2, '%' + nomprenom.toLowerCase() + '%');
-            ResultSet res = pstmt.executeQuery();
-            while (res.next()) {
-                System.out.println(res.getString("prenom") + ' ' + res.getString("nom"));
-                //System.out.println(res.getDouble("revenu"));
-                clients.add(generateClient(res));
-            }
-            res.close();
-            pstmt.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        PreparedStatement pstmt = connection.prepareStatement(requete);
+        pstmt.setString(1, '%' + nomprenom.toLowerCase() + '%');
+        pstmt.setString(2, '%' + nomprenom.toLowerCase() + '%');
+        ResultSet res = pstmt.executeQuery();
+        while (res.next()) {
+            System.out.println(res.getString("prenom") + ' ' + res.getString("nom"));
+            //System.out.println(res.getDouble("revenu"));
+            clients.add(generateClient(res));
         }
+        res.close();
+        pstmt.close();
         return clients;
     }
 
@@ -116,52 +114,57 @@ public class RequeteAssurance {
         int resNumSecu = 0;
         String requete = "INSERT INTO NUMSECU(SEXE, ANNEENAISSANCE, MOISNAISSANCE, DEPARTEMENT, COMMUNE, ORDRE, CLE)\n" +
                 "VALUES(?, ?, ?, ?, ?, ?, ?)";
-        try {
-            PreparedStatement pstmt = connection.prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
-            pstmt.setInt(1, s.getSexe());
-            pstmt.setInt(2, s.getAnneNaissance());
-            pstmt.setInt(3, s.getMoisNaissance());
-            pstmt.setInt(4, s.getDepartement());
-            pstmt.setInt(5, s.getCommune());
-            pstmt.setInt(6, s.getOrdre());
-            pstmt.setInt(7, s.getCle());
-            pstmt.executeUpdate();
-            ResultSet res = pstmt.getGeneratedKeys();
-            if (res.next()) {
-                int id = res.getInt(1);
-                resNumSecu = id;
-                System.out.println("Id du nouvel enregistrement : " + id);
-            }
-            res.close();
-            pstmt.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        PreparedStatement pstmt = connection.prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
+        pstmt.setInt(1, s.getSexe());
+        pstmt.setInt(2, s.getAnneNaissance());
+        pstmt.setInt(3, s.getMoisNaissance());
+        pstmt.setInt(4, s.getDepartement());
+        pstmt.setInt(5, s.getCodeCommune());
+        pstmt.setInt(6, s.getOrdre());
+        pstmt.setInt(7, s.getCle());
+        pstmt.executeUpdate();
+        ResultSet res = pstmt.getGeneratedKeys();
+        if (res.next()) {
+            int id = res.getInt(1);
+            resNumSecu = id;
+            System.out.println("Id du nouvel enregistrement : " + id);
         }
+        res.close();
+        pstmt.close();
         return resNumSecu;
     }
 
     public boolean ajouteClient(Client c) throws SQLException {
-        // try add numsecu before =
+        // try add numsecu before
         int resAddSecu = ajouteNumSecu(c.getnNumSecu());
         if (resAddSecu < 0) return false;
         boolean resClient = false;
         String requeteClient = "INSERT INTO CLIENT(NOM, PRENOM, NNUMSECU, TELEPHONE, REVENU, NRISQUE)\n" +
                 "VALUES (?, ?, ?, ?, ?, ?)";
-        try {
-            PreparedStatement pstmt = connection.prepareStatement(requeteClient);
-            pstmt.setString(1, c.getNom());
-            pstmt.setString(2, c.getPrenom());
-            pstmt.setInt(3, resAddSecu);
-            pstmt.setString(4, c.getTelephone());
-            pstmt.setInt(5, c.getRevenu());
-            pstmt.setInt(6, c.getRisque());
-            int nbRows = pstmt.executeUpdate();
-            if (nbRows > 0) resClient = true;
-            pstmt.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        PreparedStatement pstmt = connection.prepareStatement(requeteClient);
+        pstmt.setString(1, c.getNom());
+        pstmt.setString(2, c.getPrenom());
+        pstmt.setInt(3, resAddSecu);
+        pstmt.setString(4, c.getTelephone());
+        pstmt.setInt(5, c.getRevenu());
+        pstmt.setInt(6, c.getRisque());
+        int nbRows = pstmt.executeUpdate();
+        if (nbRows > 0) resClient = true;
+        pstmt.close();
         return resClient;
+    }
+
+    public boolean supprimerClient(Client c) throws SQLException {
+        boolean result = false;
+        String requete = "DELETE FROM NUMSECU\n" +
+                "WHERE NNUMSECU = ?";
+        PreparedStatement pstmt = connection.prepareStatement(requete);
+        pstmt.setInt(1, c.getnNumSecu().getnNumSecu());
+
+        int nbRows = pstmt.executeUpdate();
+        if (nbRows > 0) result = true;
+        pstmt.close();
+        return result;
     }
 
     public boolean miseAJourClient(Client c) throws SQLException {
@@ -169,21 +172,17 @@ public class RequeteAssurance {
         String requeteClient = "UPDATE CLIENT\n" +
                 "SET NOM=?, PRENOM=?, TELEPHONE=?, REVENU=?, NRISQUE=?\n" +
                 "WHERE NCLIENT=?";
-        try {
-            PreparedStatement pstmt = connection.prepareStatement(requeteClient);
-            pstmt.setString(1, c.getNom());
-            pstmt.setString(2, c.getPrenom());
-            pstmt.setString(3, c.getTelephone());
-            pstmt.setInt(4, c.getRevenu());
-            pstmt.setInt(5, c.getRisque());
-            // we get targeted client
-            pstmt.setInt(6, c.getnClient());
-            int nbRows = pstmt.executeUpdate();
-            if (nbRows > 0) resUpdateClient = true;
-            pstmt.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        PreparedStatement pstmt = connection.prepareStatement(requeteClient);
+        pstmt.setString(1, c.getNom());
+        pstmt.setString(2, c.getPrenom());
+        pstmt.setString(3, c.getTelephone());
+        pstmt.setInt(4, c.getRevenu());
+        pstmt.setInt(5, c.getRisque());
+        // we get targeted client
+        pstmt.setInt(6, c.getnClient());
+        int nbRows = pstmt.executeUpdate();
+        if (nbRows > 0) resUpdateClient = true;
+        pstmt.close();
         return resUpdateClient;
     }
 
@@ -205,20 +204,21 @@ public class RequeteAssurance {
                 res.getInt("nrisque"));
     }
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, NumSecuException {
         RequeteAssurance requete = new RequeteAssurance();
-        //List<Risque> mesRisques = requete.ensRisques();
+//        List<Risque> mesRisques = requete.ensRisques();
+//        System.out.println(mesRisques);
         //System.out.println(requete.ensClients());
 
-        requete.ensClients("cl");
-
-//        NumSecu s = new NumSecu(0, 98, 10, 24, 24, 22, 168);
+        //requete.ensClients("cl");
+        NumSecu s = new NumSecu(1321, 0, 98, 10, 24, 24, 22, 168);
 //        System.out.println(requete.ajouteNumSecu(s));
 
 //        Client client = new Client("Tib", "Adrien", "0777053188", 45000, s, 3);
-//        Client clientBis = new Client(621, "Veraldi", "Lucia", "0777053188", 45000, s, 3);
+        Client clientBis = new Client( 621, "Veraldi", "Lucia", "0777053188", 45000, s, 3);
 
-//        System.out.println(requete.ajouteClient(client));
+        //System.out.println(requete.ajouteClient(clientBis));
+        System.out.println(requete.supprimerClient(clientBis));
 //        System.out.println(requete.miseAJourClient(clientBis));
         requete.close();
     }

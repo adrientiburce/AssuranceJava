@@ -17,10 +17,6 @@ public class Risque {
 
     @Override
     public String toString() {
-        return "R" +
-                "{" +
-                "nRisque=" + nRisque +
-                ", niveau=" + niveau +
-                '}';
+        return "niveau : " + niveau;
     }
 }

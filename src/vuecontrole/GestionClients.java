@@ -4,8 +4,11 @@ import main.RequeteAssurance;
 import metier.Client;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
 import java.util.List;
 
 import static java.awt.Color.WHITE;
@@ -22,7 +25,7 @@ public class GestionClients extends JFrame {
     private RequeteAssurance requete;
 
 
-    public GestionClients() {
+    public GestionClients()throws SQLException {
         initialisationFenetre();
 
         initConnexion(); // init requete
@@ -33,7 +36,18 @@ public class GestionClients extends JFrame {
             public void keyReleased(KeyEvent e) {
                 super.keyReleased(e);
                 String inputNameClient = editName.getText();
-                remplirListeClients(inputNameClient);
+                try {
+                    remplirListeClients(inputNameClient);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        delete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //requete.supprimerClient(client)
+                list_clients.getSelectedIndex();
             }
         });
     }
@@ -55,7 +69,7 @@ public class GestionClients extends JFrame {
         }
     }
 
-    private void remplirListeClients(String nomprenom) {
+    private void remplirListeClients(String nomprenom)throws SQLException {
         DefaultListModel myModel = new DefaultListModel();
         List<Client> allClients;
         if (nomprenom == null) {
@@ -69,7 +83,7 @@ public class GestionClients extends JFrame {
         list_clients.setModel(myModel);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)throws SQLException {
         GestionClients gestionClients = new GestionClients();
     }
 

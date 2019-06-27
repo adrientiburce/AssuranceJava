@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
 import static java.awt.Color.*;
 
@@ -32,7 +33,11 @@ public class Accueil extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                fenetreClient = new GestionClients(); // new JfRAME
+                try {
+                    fenetreClient = new GestionClients(); // new JfRAME
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
     }
@@ -45,11 +50,10 @@ public class Accueil extends JFrame {
         this.setVisible(true);
     }
 
-    private void initConnexion(){
-        try{
+    private void initConnexion() {
+        try {
             requete = RequeteAssurance.getInstance();
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println("probleme de connexion");
             frame.dispose();
         }
@@ -57,8 +61,6 @@ public class Accueil extends JFrame {
 
     public static void main(String[] args) {
         Accueil accueil = new Accueil();
-        //accueil.frame.setContentPane(accueil.panel);
-        System.out.println(accueil);
     }
 
 }

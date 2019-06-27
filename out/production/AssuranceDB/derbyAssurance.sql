@@ -10,10 +10,10 @@ CREATE TABLE NUMSECU(
     anneeNaissance INT NOT NULL,
     moisNaissance INT NOT NULL,
     departement INT NOT NULL,
-    commune INT NOT NULL,
+    codeCommune INT NOT NULL,
     ordre INT NOT NULL,
     cle INT NOT NULL,
-    CONSTRAINT UK_NUMSECU UNIQUE (sexe, anneeNaissance, moisNaissance, departement, commune, ordre, cle)
+    CONSTRAINT UK_NUMSECU UNIQUE (sexe, anneeNaissance, moisNaissance, departement, codeCommune, ordre, cle)
 );
 
 CREATE TABLE CLIENT(
